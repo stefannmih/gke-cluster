@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flask-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "ingress-static-ip"
+spec:
+  defaultBackend:
+    service:
+      name: flaskv1-service
+      port:
+        number: 5001
+  rules:
+  - http:
+      paths:
+      - path: /v3
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: flaskv3-service
+            port:
+              number: 5003
+           

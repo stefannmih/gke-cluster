@@ -1,0 +1,4 @@
+Kubernetes config:
+
+1. Edit flaskv3-service's Health Check to make the health check to /v3, not /
+

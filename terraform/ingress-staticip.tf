@@ -1,3 +1,3 @@
-resource "google_compute_address" "ip_address" {
-  name = "ingress-static-ip"
+resource "google_compute_global_address" "default" {
+  name = "ingress-ip"
 }

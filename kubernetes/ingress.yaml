@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: flask-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: "ingress-static-ip"
+    kubernetes.io/ingress.global-static-ip-name: "ingress-ip"
 spec:
   defaultBackend:
     service:

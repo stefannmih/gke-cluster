@@ -1,6 +1,39 @@
+Create the infrastructure with Terraform
+
+1. Initialize terraform in the specific directory
+terraform init
+
+2. Apply the terraform manifests
+terraform apply
+
+
+Installing istio:
+
+1. Go to the Istio release page to download the installation file for your OS, or download and extract the latest release automatically (Linux or macOS):
+curl -L https://istio.io/downloadIstio | sh -
+
+2. Move to the Istio package directory. For example, if the package is istio-1.15.3:
+cd istio-1.15.3
+
+3. Add the istioctl client to your path (Linux or macOS):
+export PATH=$PWD/bin:$PATH
+
+4. Install istio
+istioctl install
+
+5.Add a namespace label to instruct Istio to automatically inject Envoy sidecar proxies when you deploy your application later:
+kubectl label namespace default istio-injection=enabled
+
+6. Verify everything is working
+istioctl analyze
+
+
+
 Kubernetes config:
 
-1. Edit flaskv3-service's Health Check to make the health check to /v3, not /
+1. Apply deployv1.yaml, deployv3.yaml and ingress.yaml for a basic application on HTTP
+
+2. Edit flaskv3-service's Health Check to make the health check to /v3, not /
 
 
 
@@ -10,7 +43,14 @@ DNS:
 
 2. Go to Cloud DNS and create a zone and add the A records to that zone that is poining to the static IP used by the Load Balancer
 
-3. https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs#setting_up_a_google-managed_certificate
+
+
+SSL:
+
+1. https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs#setting_up_a_google-managed_certificate
 (if DNS_PROBE_FINISHED_NXDOMAIN) check on 4G incognito 
 
 
+ISTIO GATEWAY / VIRTUAL SERVICE
+
+I used an ingress resource, but it would be better to use an ingress-gateway with VirtualService rules for traffic !!!!!!!!!!!!!!!!!!!!!

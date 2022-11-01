@@ -2,3 +2,15 @@ Kubernetes config:
 
 1. Edit flaskv3-service's Health Check to make the health check to /v3, not /
 
+
+
+DNS:
+
+1. Go to Cloud Domain and create a domain
+
+2. Go to Cloud DNS and create a zone and add the A records to that zone that is poining to the static IP used by the Load Balancer
+
+3. https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs#setting_up_a_google-managed_certificate
+(if DNS_PROBE_FINISHED_NXDOMAIN) check on 4G incognito 
+
+
